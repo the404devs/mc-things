@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Minecraft Recap</title>
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/controls.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/main.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/home.css">
+        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/nav.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+    </head>
+    <body class="theme-light">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-big">Minecraft Recap</div>
+                <div class="logo-small">Year-by-Year Statistics Comparison</div>
+            </div>
+            <div class="year-selector">
+                <button class="minibutton" onclick="loadStats(2019)" id="2019">2019</button>
+                <button class="minibutton" onclick="loadStats(2020)" id="2020">2020</button>
+                <button class="minibutton" onclick="loadStats(2021)" id="2021">2021</button>
+                <button class="minibutton" onclick="loadStats(2022)" id="2022">2022</button>
+                <button class="minibutton" onclick="loadStats(2023)" id="2023">2023</button>
+                <button class="minibutton" onclick="loadStats(2024)" id="2024">2024</button>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="primary-stats" id="primary"></div>
+                <div class="secondary-stats" id="secondary"></div>
+            </div>
+        </div>
+
+        <div class="footer subtle">
+            <span class="foot-text">Revision 1 - 2024-12-17</span>
+        </div>
+
+
+        <div class="modal">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+            <div class="modal-footer"></div>
+        </div>
+        <script src="./js/parser.js"></script>
+    </body>
+</html>
