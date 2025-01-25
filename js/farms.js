@@ -693,7 +693,7 @@ const east_wing_nodes = [
     { id: "snowball", label: "Snowball", image: "./img/snowball.png" },
     { id: "brick", label: "Brick", image: "./img/brick.png" },
     { id: "pot", label: "Pot", image: "./img/pot.png", group: "product" },
-    { id: "flower_pot", label: "Pot", image: "./img/flower_pot.png", group: "product" },
+    { id: "flower_pot", label: "Flower Pot", image: "./img/flower_pot.png", group: "product" },
     { id: "bricks", label: "Bricks", image: "./img/bricks.png", group: "product" },
     { id: "terracotta", label: "Terracotta", image: "./img/terracotta.png", group: "product" },
     { id: "clay_ball", label: "Clay Ball", image: "./img/clay_ball.png" },
