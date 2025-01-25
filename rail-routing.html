@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Railway Routing</title>
+        <link rel="stylesheet" type="text/css" href="./css/factory.css">
+        <link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+    </head>
+    <body>
+        <div class="header" style="display: flex; flex-direction: row; justify-content: space-evenly;">
+            <h1 style="width: auto;">Railway Routing</h1>
+            <p style="font-weight: normal; text-decoration: none;">
+                An automatic routing guide for the railway network in <b>"First World"</b>, my singleplayer Minecraft world.
+            </p>
+        </div>
+        <div class="content" style="width: 100%; height: 90vh; display: flex;">
+            <div class="column" style="flex-basis: 75%;">
+                <div id="vis-container" style="width: 100%; height: 85%; border:none">
+                    <div></div> 
+                </div>
+                <div style="height: calc(15% - 12px); margin-top: 5px;">
+                    <span style="font-weight: bold; text-decoration: underline; font-size:20px">Calculate shortest path between nodes:</span>
+                    <span style="margin-left: 25px;">Start: </span>
+                    <select class="fakenode" id="start-display">Select start...</select>
+                    <span style="margin-left: 25px;">End: </span>
+                    <select class="fakenode"id="end-display">Select end...</select>
+                    <button style="margin-left: 25px;" onclick="calcBestRoute()">Calculate</button>
+                    <button style="margin-left: 25px;" onclick="reset()">Clear</button>
+                    <div id="path-display" style="max-width: 75vw;"></div>
+                </div>
+              </div>
+
+            <div class="column" style="flex-basis: 25%;">
+                <div class="container" id="card-container"></div>
+            </div>
+        </div>
+        <div class="footer subtle" style="margin-top: 0;">
+            <span>This is gonna take a while to load...</span>
+            <span>2025-01-19</span>
+          </div>
+
+        <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+        <script src="./js/railway-routing.js"></script>
+    </body>
+</html>

@@ -693,6 +693,7 @@ const east_wing_nodes = [
     { id: "snowball", label: "Snowball", image: "./img/snowball.png" },
     { id: "brick", label: "Brick", image: "./img/brick.png" },
     { id: "pot", label: "Pot", image: "./img/pot.png", group: "product" },
+    { id: "flower_pot", label: "Pot", image: "./img/flower_pot.png", group: "product" },
     { id: "bricks", label: "Bricks", image: "./img/bricks.png", group: "product" },
     { id: "terracotta", label: "Terracotta", image: "./img/terracotta.png", group: "product" },
     { id: "clay_ball", label: "Clay Ball", image: "./img/clay_ball.png" },
@@ -707,7 +708,7 @@ const east_wing_nodes = [
 
 const east_wing_edges = [
     { from: "brickmaker", to: "clay_ball" },
-    { from: "clay_ball", to: "terracotta" },
+    { from: "clay", to: "terracotta" },
     { from: "oak_log", to: "terracotta" },
     { from: "brickmaker", to: "rooted_dirt" },
     { from: "rooted_dirt", to: "dirt" },
@@ -720,6 +721,7 @@ const east_wing_edges = [
     { from: "clay_ball", to: "brick" },
     { from: "brick", to: "bricks" },
     { from: "brick", to: "pot" },
+    { from: "brick", to: "flower_pot" },
     { from: "bone_block", to: "brickmaker", dashes: [10, 10] },
     { from: "brick", to: "pottery_crafter", dashes: [10, 10] },
     { from: "snowman_shredder", to: "snowman" },
@@ -1029,10 +1031,10 @@ const mushroom_point_edges = [
     { from: "dark_oak_farm", to: "pale_oak_log" },
     { from: "nether_tree_farm", to: "crimson_stem" },
     { from: "nether_tree_farm", to: "warped_stem" },
-    { from: "dark_oak_log", to: "mushroom_point_qp", dashes: [10, 10] },
-    { from: "pale_oak_log", to: "mushroom_point_qp", dashes: [10, 10] },
-    { from: "crimson_stem", to: "mushroom_point_qp", dashes: [10, 10] },
-    { from: "warped_stem", to: "mushroom_point_qp", dashes: [10, 10] },
+    { from: "dark_oak_log", to: "mushroom_point_qp" },
+    { from: "pale_oak_log", to: "mushroom_point_qp" },
+    { from: "crimson_stem", to: "mushroom_point_qp", },
+    { from: "warped_stem", to: "mushroom_point_qp", },
 
 
     { from: "mushroom_point_qp", to: "qp_central", arrows: 'to;from', width: 5, physics: false },
@@ -1203,7 +1205,7 @@ const dunederry_edges = [
     { from: "mangrove_farm", to: "mangrove_propagule" },
     { from: "mangrove_farm", to: "mangrove_log" },
     { from: "cocoa_bean_farm", to: "cocoa_beans" },
-    { from: "mangrove_log", to: "dunederry_qp", dashes: [10,10] },
+    { from: "mangrove_log", to: "dunederry_qp" },
     
     { from: "infested_slime", to: "allay" },
     { from: "infested_slime", to: "infested_potion" },

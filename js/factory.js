@@ -173,7 +173,7 @@ function generateGraphFromJSON() {
 
         recipes.some((recipe) => {
             if (recipe.item == node.id) {
-            recipe.color = color;
+                recipe.color = color;
             }
         });
     });
@@ -182,10 +182,10 @@ function generateGraphFromJSON() {
 }
 
 function generateRecipeCards() {
-    const container = document.getElementById("recipe-container");
+    const container = document.getElementById("card-container");
     recipes.map(recipe => {
         const card = document.createElement("div")
-        card.className = "recipe"
+        card.className = "card"
         card.style.backgroundColor = recipe.color
         card.id = recipe.item
         const header = document.createElement("h3");
