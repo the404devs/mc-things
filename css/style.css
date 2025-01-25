@@ -24,6 +24,8 @@ body.theme-light {
     background: var(--background-image);
     background-attachment: fixed;
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     max-height: 100vh;
