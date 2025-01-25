@@ -434,7 +434,7 @@ function generateJunctionCards() {
             const station = stations.find(station => station.id == path[0]);
             if (station) {
                 const span = document.createElement("span");
-                span.innerText = station.label;
+                span.innerText = station.label.replaceAll("\n", " ");
                 span.title = path[2];
                 span.onclick = function() {
                     highlightNodes(path[3]);
