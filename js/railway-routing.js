@@ -172,6 +172,7 @@ const stations = [
     { id: "craglorn", label: "Craglorn", group: "yellow" },
     { id: "cobble", label: "Cobble\nCreek", group: "yellow" },
     { id: "meadowgrace", label: "Meadowgrace", group: "red" },
+    { id: "gg", label: "Game Garden", group: "red" },
     { id: "museum", label: "Mob Museum", group: "blue" },
     { id: "dogwood", label: "Dogwood", group: "blue" },
     { id: "witherfields", label: "Witherfields", group: "red" },
@@ -212,11 +213,12 @@ const edges = [
     { id:"22", from: "shroom", to: "bunny", label: "184" },
     { id:"23", from: "craglorn", to: "boner", label: "793" },
     { id:"24", from: "craglorn", to: "cobble", label: "613" },
-    { id:"25", from: "meadowgrace", to: "bunny", label: "0", dashes: [10,10] },
-    { id:"26", from: "museum", to: "dwj", label: "0", dashes: [10,10] },
-    { id:"27", from: "dogwood", to: "stronghold", label: "0", dashes: [10,10] },
-    { id:"28", from: "witherfields", to: "sog", label: "0", dashes: [10,10] },
-    { id:"29", from: "dunederry", to: "jungle", label: "0", dashes: [10,10] },
+    { id:"25", from: "meadowgrace", to: "gg", label: "0", dashes: [10,10] },
+    { id:"26", from: "gg", to: "bunny", label: "201" },
+    { id:"27", from: "museum", to: "dwj", label: "0", dashes: [10,10] },
+    { id:"28", from: "dogwood", to: "stronghold", label: "0", dashes: [10,10] },
+    { id:"29", from: "witherfields", to: "sog", label: "0", dashes: [10,10] },
+    { id:"30", from: "dunederry", to: "jungle", label: "0", dashes: [10,10] },
 ];
 
 
@@ -252,7 +254,7 @@ const junction_exits = {
         west: "linhir"
     },
     bunny: {
-        north: "meadowgrace",
+        north: "gg",
         east: "frost",
         south: "shroom",
         west: "shulker"
@@ -491,6 +493,7 @@ function dijkstra(start) {
     const visited = {};
     const dijEdges = {};
     let unvisited = Object.keys(graph);
+    console.log(unvisited);
     let arr = [];
     const bestEdge = {};
 
@@ -498,9 +501,7 @@ function dijkstra(start) {
         distances[node] = Infinity;
     });
   
-    //   outputInitdij();
     let counter = 0;
-
     distances[start] = 0;
 
     while (unvisited.length > 0) {
@@ -526,7 +527,6 @@ function dijkstra(start) {
 
         visited[currentNode] = distances[currentNode];
         unvisited = unvisited.filter((node) => node !== currentNode);
-        // outputFormater(distances, visited, dijEdges, counter);
         counter++;
 
         curLeastDistance = null;
@@ -554,11 +554,11 @@ function dijkstra(start) {
             let totalCost = 0;
     
             while (currentNode !== start) {
-            const { from, to, label } = bestEdge[currentNode];
-            path.unshift(from);
-            totalCost += parseInt(label);
-            costArr.unshift(parseInt(label))
-            currentNode = from;
+                const { from, to, label } = bestEdge[currentNode];
+                path.unshift(from);
+                totalCost += parseInt(label);
+                costArr.unshift(parseInt(label))
+                currentNode = from;
             }
             path.push(node);
 
@@ -591,8 +591,6 @@ function dijkstra(start) {
             }
         }
     }
-
-
     return temp;
 }
 

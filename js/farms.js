@@ -244,6 +244,8 @@ const location_edges = [
     { from: "base", to: "turtle_farm" },
     { from: "base", to: "armadillo_farm" },
     { from: "base", to: "resin_farm" },
+    { from: "base", to: "trident_farm" },
+    { from: "base", to: "egg_vending_machine" },
     { from: "base", to: "qp_central", physics: false },
     { from: "base", to: "qp_bulk_storage" },
     { from: "base", to: "general_storage" },
@@ -496,6 +498,10 @@ const simple_bonemeal_nodes = [
     { id: "glow_lichen", label: "Glow Lichen", image: "./img/glow_lichen.png", group: "product" },
     { id: "pale_hanging_moss", label: "Pale Hanging Moss", image: "./img/pale_hanging_moss.png", group: "product" },
     { id: "big_dripleaf", label: "Big Dripleaf", image: "./img/big_dripleaf.png", group: "product" },
+    { id: "firefly_bush", label: "Firefly Bush", image: "./img/firefly_bush.png", group: "product" },
+    { id: "bush", label: "Bush", image: "./img/bush.png", group: "product" },
+    { id: "short_dry_grass", label: "Short Dry Grass", image: "./img/short_dry_grass.png", group: "product" },
+    { id: "tall_dry_grass", label: "Tall Dry Grass", image: "./img/tall_dry_grass.png", group: "product" },
 ];
 
 const simple_bonemeal_edges = [
@@ -505,6 +511,10 @@ const simple_bonemeal_edges = [
     { from: "simple_bonemeal", to: "glow_lichen" },
     { from: "simple_bonemeal", to: "pale_hanging_moss" },
     { from: "simple_bonemeal", to: "big_dripleaf" },
+    { from: "simple_bonemeal", to: "firefly_bush" },
+    { from: "simple_bonemeal", to: "bush" },
+    { from: "simple_bonemeal", to: "short_dry_grass" },
+    { from: "simple_bonemeal", to: "tall_dry_grass" },
     { from: "bone_block", to: "simple_bonemeal", dashes: [10, 10] },
 ];
 
@@ -674,6 +684,7 @@ const west_wing_edges = [
 ];
 
 const east_wing_nodes = [
+    { id: "trident_farm", label: "Trident Farm\n\nFebruary 7, 2025", group: "farm" },
     { id: "brickmaker", label: "The Brickmaker\n\nDecember 19, 2024", group: "machine" },
     { id: "pottery_crafter", label: "Pottery Crafter\n\nJuly 19, 2023", group: "machine" },
     { id: "template_photocopier", label: "Template Photocopier\n\nMarch 4, 2024", group: "machine" },
@@ -704,6 +715,9 @@ const east_wing_nodes = [
     { id: "rooted_dirt", label: "Rooted Dirt", image: "./img/rooted_dirt.png", group: "product" },
     { id: "dirt", label: "Dirt", image: "./img/dirt.png", group: "product" },
     { id: "hanging_roots_brick", label: "Hanging Roots", image: "./img/hanging_roots.png" },
+    { id: "trident", label: "Trident", image: "./img/trident.png", group: "product" },
+    { id: "nautilus_shell", label: "Nautilus Shell", image: "./img/nautilus_shell.png", group: "product" },
+    { id: "drowned_trident", label: "Drowned", image: "./img/drowned.png", group: "mob" },
 ];
 
 const east_wing_edges = [
@@ -734,6 +748,9 @@ const east_wing_edges = [
     { from: "cobble_blaster", to: "cobblestone_2" },
     { from: "bamboo_2", to: "bamboo_block_2" },
     { from: "bamboo_block_2", to: "bamboo_planks" },
+    { from: "trident_farm", to: "drowned_trident" },
+    { from: "drowned_trident", to: "nautilus_shell" },
+    { from: "drowned_trident", to: "trident" },
 ];
 
 
@@ -913,6 +930,12 @@ const spawn_nodes = [
     { id: "honeycomb", label: "Honeycomb", image: "./img/honeycomb.png", group: "product" },
     { id: "honeycomb_block", label: "Honeycomb Block", image: "./img/honeycomb_block.png", group: "product" },
     
+    { id: "egg_vending_machine", label: "Communal Egg\nStation\n\nFebruary 6, 2025", group: "farm" },
+    { id: "egg_egg", label: "Egg", image: "./img/egg.png", group: "product" },
+    { id: "brown_egg", label: "Brown Egg", image: "./img/brown_egg.png", group: "product" },
+    { id: "blue_egg", label: "Blue Egg", image: "./img/blue_egg.png", group: "product" },
+    { id: "chicken_egg", label: "Chicken", image: "./img/chicken.png", group: "mob" },
+
     { id: "chicken_cooker", label: "Bootleg Chicken Cooker\n\nFebruary 15, 2020", group: "farm" },
     { id: "chicken", label: "Chicken", image: "./img/chicken.png", group: "mob" },
     { id: "cooked_chicken", label: "Cooked Chicken", image: "./img/cooked_chicken.png", group: "product" },
@@ -958,6 +981,11 @@ const spawn_edges = [
     { from: "honey_farm_1", to: "bee1" },
     { from: "bee1", to: "honeycomb" },
     { from: "honeycomb", to: "honeycomb_block" },
+
+    { from: "egg_vending_machine", to: "chicken_egg" },
+    { from: "chicken_egg", to: "egg_egg" },
+    { from: "chicken_egg", to: "brown_egg" },
+    { from: "chicken_egg", to: "blue_egg" },
 
     { from: "chicken_cooker", to: "chicken" },
     { from: "chicken", to: "cooked_chicken" },
