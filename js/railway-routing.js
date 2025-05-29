@@ -213,7 +213,7 @@ const edges = [
     { id:"22", from: "shroom", to: "bunny", label: "184" },
     { id:"23", from: "craglorn", to: "boner", label: "793" },
     { id:"24", from: "craglorn", to: "cobble", label: "613" },
-    { id:"25", from: "meadowgrace", to: "gg", label: "0", dashes: [10,10] },
+    { id:"25", from: "meadowgrace", to: "gg", label: "849" },
     { id:"26", from: "gg", to: "bunny", label: "201" },
     { id:"27", from: "museum", to: "dwj", label: "0", dashes: [10,10] },
     { id:"28", from: "dogwood", to: "stronghold", label: "0", dashes: [10,10] },

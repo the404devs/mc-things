@@ -47,6 +47,10 @@ const factory = {
     "piston": ["planks", "cobblestone", "iron", "redstone"],
     "diorite": ["cobblestone", "quartz"],
     "glowstone": ["glowstone_dust"],
+    "lead": ["string"],
+    // "bow": ["string", "stick"],
+    "shulker_box": ["shulker_shell", "chest"]
+    // "dispenser": ["bow", "cobblestone", "redstone"]
 }
 
 
