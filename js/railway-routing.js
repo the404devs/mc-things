@@ -177,6 +177,7 @@ const stations = [
     { id: "dogwood", label: "Dogwood", group: "blue" },
     { id: "witherfields", label: "Witherfields", group: "red" },
     { id: "dunederry", label: "Dunederry\nCity", group: "yellow" },
+    { id: "redstone", label: "Redstone\nIslands", group: "blue" },
 ];
 
 const junctions = [
@@ -215,17 +216,18 @@ const edges = [
     { id:"24", from: "craglorn", to: "cobble", label: "613" },
     { id:"25", from: "meadowgrace", to: "gg", label: "849" },
     { id:"26", from: "gg", to: "bunny", label: "201" },
-    { id:"27", from: "museum", to: "dwj", label: "0", dashes: [10,10] },
+    { id:"27", from: "redstone", to: "dwj", label: "333" },
     { id:"28", from: "dogwood", to: "stronghold", label: "0", dashes: [10,10] },
     { id:"29", from: "witherfields", to: "sog", label: "0", dashes: [10,10] },
     { id:"30", from: "dunederry", to: "jungle", label: "0", dashes: [10,10] },
+    { id:"31", from: "museum", to: "redstone", label: "0", dashes: [10,10] },
 ];
 
 
 const junction_exits = {
     dwj: {
         north: "eclipse",
-        east: "museum",
+        east: "redstone",
         south: "dwr",
         west: "end"
     },
@@ -300,6 +302,8 @@ function highlightNodes(nodes) {
 
 const stationRoutes = {}
 function generateStationRoutes() {
+    let maxCost = 0;
+    let maxPath = [];
     const startSelector = document.getElementById("start-display");
     const endSelector = document.getElementById("end-display");
     stations.map(station => {
@@ -318,11 +322,26 @@ function generateStationRoutes() {
                 "path": route[2],
                 "costArr": route[3]
             };
+            let totalCost = 0;
+            for (i = 0; i < route[3].length; i++) {
+                totalCost += route[3][i];
+            }
+
+            if (totalCost > maxCost) {
+                maxCost = totalCost;
+                maxPath = route[2];
+            }
+            
         });
     });
 
+    // console.log(maxPath);
+    document.getElementById('longest-path').onclick = () => {
+        getBestRoute(maxPath[0], maxPath[maxPath.length-1]);
+    };
     endSelector.value = stations[stations.length-1].id;
     return stationRoutes;
+
 }
 
 function calcBestRoute() {
