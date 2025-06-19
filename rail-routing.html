@@ -2,43 +2,67 @@
 <html>
     <head>
         <title>Railway Routing</title>
-        <link rel="stylesheet" type="text/css" href="./css/factory.css">
+        <link rel="stylesheet" type="text/css" href="./css/new.css">
         <link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+        <script src="https://kit.fontawesome.com/a79a931136.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="header" style="display: flex; flex-direction: row; justify-content: space-evenly;">
-            <h1 style="width: auto;">Railway Routing</h1>
-            <p style="font-weight: normal; text-decoration: none;">
-                An automatic routing guide for the railway network in <b>"First World"</b>, my singleplayer Minecraft world.
-            </p>
-            <a href="./diagrams/railway_map_2025_06_08.png"><button>True-Scale Map</button></a>
-        </div>
-        <div class="content row" style="width: 100%; height: 90vh; display: flex;">
-            <div class="column" style="flex-basis: 75%;">
-                <div id="vis-container" style="width: 100%; height: 85%; border:none">
-                    <div></div> 
-                </div>
-                <div style="height: calc(15% - 12px); margin-top: 5px;">
-                    <span style="font-weight: bold; text-decoration: underline; font-size:20px">Calculate shortest path between nodes:</span>
-                    <span style="margin-left: 25px;">Start: </span>
-                    <select class="fakenode" id="start-display">Select start...</select>
-                    <span style="margin-left: 25px;">End: </span>
-                    <select class="fakenode"id="end-display">Select end...</select>
-                    <button style="margin-left: 25px;" onclick="calcBestRoute()">Calculate</button>
-                    <button style="margin-left: 25px;" onclick="reset()">Clear</button>
-                    <button style="margin-left: 25px;" onclick="longest()" id="longest-path">Longest Possible Trip</button>
-                    <div id="path-display" style="max-width: 75vw;"></div>
-                </div>
-              </div>
+        <div class="header">
+            <span class="menu-button" onclick="document.querySelector('.sidenav').classList.toggle('shown')" title="Show Menu" id="help-menu-open">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </span>
+            <div class="logo">
+                <div class="logo-big">Railway Routing</div>
+                <div class="logo-small">An automatic routing guide</div>
+            </div>
 
-            <div class="column" style="flex-basis: 25%;">
-                <div class="container" id="card-container"></div>
+            <a href="./diagrams/railway_map_2025_06_08.png"><button class="minibutton">Map</button></a>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content" style="padding: 0; margin: 0 10px;">
+                <div class="column wide">
+                    <div class="vis-container" id="vis-container" style="height: 80vh;">
+                        <div></div> 
+                    </div>
+                    <div class="routing-controls">
+                        <span style="font-weight: bold; text-decoration: underline; font-size:20px">Calculate shortest path between nodes:</span>
+                        <span style="margin-left: 25px;">Start: </span>
+                        <select class="slimbutton" id="start-display">Select start...</select>
+                        <span style="margin-left: 25px;">End: </span>
+                        <select class="slimbutton"id="end-display">Select end...</select>
+                        <button class="slimbutton" onclick="calcBestRoute()">Calculate</button>
+                        <button class="slimbutton" onclick="reset()">Clear</button>
+                        <button class="slimbutton" onclick="longest()" id="longest-path">Longest Possible Trip</button>
+                        <div id="path-display"></div>
+                    </div>
+                </div>
+                <div class="column slim">
+                    <div class="container" id="card-container"></div>
+                </div>
             </div>
         </div>
-        <div class="footer subtle" style="margin-top: 0;">
-            <span>This is gonna take a while to load...</span>
-            <span>2025-06-08</span>
-          </div>
+
+        <div class="sidenav">
+            <a onclick="document.querySelector('.sidenav').classList.toggle('shown')"><i class="fas fa-times" aria-hidden="true"></i>Close</a>
+            <hr>
+            <a href="./index.html"><i class="fas fa-home" aria-hidden="true"></i>Home</a>
+            <a href="./rail-routing.html" class="active"><i class="fas fa-train-subway" aria-hidden="true"></i>Railways</a>
+            <a href="./farms.html"><i class="fas fa-tractor" aria-hidden="true"></i>Farms</a>
+            <a href="./factory.html"><i class="fas fa-gears" aria-hidden="true"></i>Factory</a>
+            <a href="./stat-recap.html"><i class="fas fa-chart-simple" aria-hidden="true"></i>Statistics</a>
+            <hr>
+            <a href="https://the404.nl"><i class="fas fa-computer" aria-hidden="true"></i>The404 Home</a>
+            <a href="https://github.com/the404devs/mc-things" target="_blank"><i class="fab fa-github" aria-hidden="true"></i>Source Code</a>
+        </div>
+
+
+            
+
+            
+        <div class="footer subtle">
+            <span class="foot-text">Revision 3 - 2025-06-08</span>
+        </div>
 
         <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
         <script src="./js/railway-routing.js"></script>

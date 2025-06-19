@@ -1,27 +1,19 @@
 <html>
     <head>
         <title>Minecraft Things</title>
-        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/controls.css">
-        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/main.css">
-        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/home.css">
-        <link rel="stylesheet" type="text/css" href="https://the404.nl/css/nav.css">
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/new.css">
         <link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+        <script src="https://kit.fontawesome.com/a79a931136.js" crossorigin="anonymous"></script>
     </head>
     <body class="theme-light">
         <div class="header">
+            <span class="menu-button" onclick="document.querySelector('.sidenav').classList.toggle('shown')" title="Show Menu" id="help-menu-open">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </span>
             <div class="logo">
                 <div class="logo-big">Minecraft Things</div>
                 <div class="logo-small">Various MC-related things</div>
             </div>
-            <!--<div class="year-selector">
-                <button class="minibutton" onclick="loadStats(2019)" id="2019">2019</button>
-                <button class="minibutton" onclick="loadStats(2020)" id="2020">2020</button>
-                <button class="minibutton" onclick="loadStats(2021)" id="2021">2021</button>
-                <button class="minibutton" onclick="loadStats(2022)" id="2022">2022</button>
-                <button class="minibutton" onclick="loadStats(2023)" id="2023">2023</button>
-                <button class="minibutton" onclick="loadStats(2024)" id="2024">2024</button>
-            </div>-->
         </div>
 
         <div class="content-wrapper">
@@ -157,8 +149,21 @@
             </div>
         </div>
 
+        <div class="sidenav">
+            <a onclick="document.querySelector('.sidenav').classList.toggle('shown')"><i class="fas fa-times" aria-hidden="true"></i>Close</a>
+            <hr>
+            <a href="./index.html" class="active"><i class="fas fa-home" aria-hidden="true"></i>Home</a>
+            <a href="./rail-routing.html"><i class="fas fa-train-subway" aria-hidden="true"></i>Railways</a>
+            <a href="./farms.html"><i class="fas fa-tractor" aria-hidden="true"></i>Farms</a>
+            <a href="./factory.html"><i class="fas fa-gears" aria-hidden="true"></i>Factory</a>
+            <a href="./stat-recap.html"><i class="fas fa-chart-simple" aria-hidden="true"></i>Statistics</a>
+            <hr>
+            <a href="https://the404.nl"><i class="fas fa-computer" aria-hidden="true"></i>The404 Home</a>
+            <a href="https://github.com/the404devs/mc-things" target="_blank"><i class="fab fa-github" aria-hidden="true"></i>Source Code</a>
+        </div>
+
         <div class="footer subtle">
-            <span class="foot-text">Revision 1 - 2024-12-29</span>
+            <span class="foot-text">Revision 2 - 2025-06-19</span>
         </div>
 
 

@@ -403,7 +403,7 @@ function generateJunctionCards() {
     junctions.map(junction => {
         const card = document.createElement("div");
         card.className = "card";
-        card.style.backgroundColor = "lightgrey";
+        // card.style.backgroundColor = "lightgrey";
         card.id = junction.id;
         const header = document.createElement("h3");
         header.textContent = junction.label;

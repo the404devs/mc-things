@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>All The Farms!</title>
-        <link rel="stylesheet" type="text/css" href="./css/factory.css">
-        <link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" type="text/css" href="./css/new.css">
+		<link rel="shortcut icon" type="image/x-icon" href="img/clock.png">
+		<script src="https://kit.fontawesome.com/a79a931136.js" crossorigin="anonymous"></script>
+
+		<title>All The Farms!</title>
     </head>
     <body>
-        <div class="header" style="display: flex; flex-direction: row; justify-content: space-evenly;">
-            <h1 style="width: auto;">All The Farms!</h1>
-            <p style="font-weight: normal; text-decoration: none;">
-                A comprehensive chart of all the farms, machines, and infrastructure in <b>"First World"</b>, my singleplayer Minecraft world.
-            </p>
-        </div>
-        <div class="content" style="width: 100%; height: 90vh;">
-            <div id="vis-container" style="width: 100%; height: 98%; border:none">
-                <div></div> 
+        <div class="header">
+			<span class="menu-button" onclick="document.querySelector('.sidenav').classList.toggle('shown')" title="Show Menu" id="help-menu-open">
+				<i class="fas fa-bars" aria-hidden="true"></i>
+			</span>
+			<div class="logo">
+				<div class="logo-big">All The Farms!</div>
+				<div class="logo-small">World Infrastructure Graph</div>
+			</div>
+		</div>
+        <div class="content-wrapper">
+            <div class="content" style="height: 95vh;">
+                <div class="vis-container" id="vis-container">
+                    <div></div> 
+                </div>
             </div>
         </div>
-        <div class="footer subtle" style="margin-top: 0;">
-            <span>This is gonna take a while to load...</span>
-            <span>2025-02-08</span>
+        <div class="sidenav">
+            <a onclick="document.querySelector('.sidenav').classList.toggle('shown')"><i class="fas fa-times" aria-hidden="true"></i>Close</a>
+            <hr>
+            <a href="./index.html"><i class="fas fa-home" aria-hidden="true"></i>Home</a>
+            <a href="./rail-routing.html"><i class="fas fa-train-subway" aria-hidden="true"></i>Railways</a>
+            <a href="./farms.html" class="active"><i class="fas fa-tractor" aria-hidden="true"></i>Farms</a>
+            <a href="./factory.html"><i class="fas fa-gears" aria-hidden="true"></i>Factory</a>
+            <a href="./stat-recap.html"><i class="fas fa-chart-simple" aria-hidden="true"></i>Statistics</a>
+            <hr>
+            <a href="https://the404.nl"><i class="fas fa-computer" aria-hidden="true"></i>The404 Home</a>
+            <a href="https://github.com/the404devs/mc-things" target="_blank"><i class="fab fa-github" aria-hidden="true"></i>Source Code</a>
+        </div>
+        
+        <div class="footer">
+            <span class="foot-text">This is gonna take a while to load...</span>
+            <span class="foot-text">2025-06-19</span>
           </div>
 
         <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>

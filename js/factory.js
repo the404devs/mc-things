@@ -159,17 +159,17 @@ function generateGraphFromJSON() {
         let border = "";
         if (!edges.some((edge) => edge.to === node.id)) {
             // Tier 1: items coming into the factory
-            color = "pink";
+            color = "rgba(255, 0, 0, 0.5)";
             border = "red";
         } 
         else if (!edges.some((edge) => edge.from === node.id)) {
             // Tier 3: result items
-            color = "lightblue";
+            color = "rgba(0, 0, 255, 0.5)";
             border = "blue";
         } 
         else if (!edges.some((edge) => edge.from === node.id && !edges.some((edge) => edge.to === node.id))) {
             // Tier 2: result items also used in recipes
-            color = "lightgreen";
+            color = "rgba(0, 255, 0, 0.5)";
             border = "green";
         }
 
@@ -188,10 +188,10 @@ function generateGraphFromJSON() {
 function generateRecipeCards() {
     const container = document.getElementById("card-container");
     recipes.map(recipe => {
-        const card = document.createElement("div")
-        card.className = "card"
-        card.style.backgroundColor = recipe.color
-        card.id = recipe.item
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.backgroundColor = recipe.color;
+        card.id = recipe.item;
         const header = document.createElement("h3");
         header.textContent = recipe.item;
         header.onclick = function() {
@@ -203,7 +203,7 @@ function generateRecipeCards() {
         links.className = "link-container";
         recipe.ingredients.map(item => {
             const button = document.createElement("button");
-            button.className = "link";
+            button.className = "slimbutton";
             button.textContent = item;
             button.onclick = function() {
                 highlightNode(item);
