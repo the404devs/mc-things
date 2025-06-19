@@ -436,16 +436,16 @@ function generateJunctionCards() {
 
             switch(key) {
                 case "north":
-                    header.style.backgroundColor = "blue";
+                    header.style.backgroundColor = "rgb(0 0 192 / 75%)";
                     break;
                 case "south":
-                    header.style.backgroundColor = "goldenrod";
+                    header.style.backgroundColor = "rgb(218 165 32 / 75%)";
                     break;
                 case "west":
-                    header.style.backgroundColor = "red";
+                    header.style.backgroundColor = "rgb(192 0 0 / 75%)";
                     break;
                 case "east":
-                    header.style.backgroundColor = "green";
+                    header.style.backgroundColor = "rgb(0 128 0 / 75%)";
                     break;
             }
         }

@@ -691,6 +691,7 @@ span.nodeArrow {
     font-family: 'Raleway', 'Arial', sans-serif;
     font-size: 18px;
     margin: 15px;
+    width: -webkit-fill-available;
     cursor: pointer;
     transition: 0.1s transform;
     overflow: hidden;
@@ -847,11 +848,14 @@ button.slimbutton:hover::before, select.slimbutton:hover::before {
 }
 
 @media (max-width: 1000px) {
-    div.column {
+    div.column,
+    div.column.wide,
+    div.column.slim {
         flex-basis: 100%;
     }
     div.content {
         flex-wrap: wrap;
+        overflow-y: scroll;
     }
 }
 
