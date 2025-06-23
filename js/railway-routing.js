@@ -179,6 +179,8 @@ const stations = [
     { id: "dunederry", label: "Dunederry\nCity", group: "yellow" },
     { id: "redstone", label: "Redstone\nIslands", group: "blue" },
     { id: "concrete", label: "Concrete\nHall", group: "green" },
+    { id: "echell", label: "Echell Forest", group: "yellow" },
+    { id: "omnidye", label: "The Omnidye", group: "yellow" },
 ];
 
 const junctions = [
@@ -223,6 +225,8 @@ const edges = [
     { id:"30", from: "dunederry", to: "jungle", label: "1506" },
     { id:"31", from: "museum", to: "redstone", label: "0", dashes: [10,10] },
     { id:"32", from: "squid", to: "concrete", label: "308" },
+    { id:"33", from: "cobble", to: "echell", label: "573" },
+    { id:"34", from: "echell", to: "omnidye", label: "451" },
 ];
 
 

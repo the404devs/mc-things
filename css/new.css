@@ -628,7 +628,7 @@ div.vis-container, div.routing-controls {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-alt);
     font-family: 'Raleway', 'Arial', sans-serif;
-    font-style: italic;
+    /* font-style: italic; */
     width: 90%;
     align-items: center;
     justify-content: space-evenly;
@@ -644,12 +644,15 @@ div.routing-controls {
 div#path-display {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     /* border-top: 1px solid var(--border); */
     /* margin-top: 10px; */
     /* margin-bottom: 5px; */
-    flex-basis: 100%;
+    /* flex-basis: 100%; */
+    max-width: 100%;
     align-items: center;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 span.fakenode {
     background-color: lightgrey;
@@ -679,7 +682,13 @@ span.nodeArrow {
     align-content: center;
     flex-wrap: wrap;
     padding: 0;
+    text-align: center;
     font-weight: bold;
+    font-family: 'Inconsolata', monospace;
+}
+
+span.nodeArrow:last-of-type {
+    width: 30px;
 }
 
 .card {
@@ -819,6 +828,10 @@ select.slimbutton {
 
 button.slimbutton:hover, select.slimbutton:hover {
     color: var(--text-alt);
+}
+
+select.slimbutton {
+    font-weight: bold;
 }
 
 select.slimbutton:hover {
