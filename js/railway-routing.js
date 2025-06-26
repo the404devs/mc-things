@@ -154,33 +154,39 @@ const options = {
 };
 
 const stations = [
-    { id: "linhir", label: "Linhir", group: "green" },
-    { id: "squid", label: "Squid Farm", group: "green" },
-    { id: "shulker", label: "Shulker Farm", group: "green" },
-    { id: "frost", label: "Frost\nMountain", group: "green" },
+    { id: "meadowgrace", label: "Meadowgrace", group: "red" },
+    { id: "gg", label: "Game Garden", group: "red" },
     { id: "shroom", label: "Mushroom\nPoint", group: "red" },
     { id: "eclipse", label: "Eclipse\nHarbour", group: "red" },
     { id: "dwr", label: "Darkwood Rise", group: "red" },
     { id: "base", label: "Base", group: "red" },
     { id: "castle", label: "Stoneholt\nCastle", group: "red" },
-    { id: "arena", label: "Arena", group: "orange" },
-    { id: "spiders", label: "Spiders", group: "orange" },
-    { id: "cherry", label: "Cherry\nCastle", group: "yellow" },
-    { id: "peakside", label: "Peakside", group: "yellow" },
-    { id: "westport", label: "Westport", group: "yellow" },
-    { id: "end", label: "End Portal", group: "blue" },
-    { id: "craglorn", label: "Craglorn", group: "yellow" },
-    { id: "cobble", label: "Cobble\nCreek", group: "yellow" },
-    { id: "meadowgrace", label: "Meadowgrace", group: "red" },
-    { id: "gg", label: "Game Garden", group: "red" },
-    { id: "museum", label: "Mob Museum", group: "blue" },
-    { id: "dogwood", label: "Dogwood", group: "blue" },
     { id: "witherfields", label: "Witherfields", group: "red" },
-    { id: "dunederry", label: "Dunederry\nCity", group: "yellow" },
+    
+    { id: "dogwood", label: "Dogwood", group: "blue" },
+    { id: "end", label: "End Portal", group: "blue" },
     { id: "redstone", label: "Redstone\nIslands", group: "blue" },
-    { id: "concrete", label: "Concrete\nHall", group: "green" },
-    { id: "echell", label: "Echell Forest", group: "yellow" },
+    { id: "museum", label: "Mob Museum", group: "blue" },
+
     { id: "omnidye", label: "The Omnidye", group: "yellow" },
+    { id: "echell", label: "Echell Forest", group: "yellow" },
+    { id: "cobble", label: "Cobble\nCreek", group: "yellow" },
+    { id: "craglorn", label: "Craglorn", group: "yellow" },
+    { id: "westport", label: "Westport", group: "yellow" },
+    { id: "peakside", label: "Peakside", group: "yellow" },
+    { id: "cherry", label: "Cherry\nCastle", group: "yellow" },
+    { id: "dunederry", label: "Dunederry\nCity", group: "yellow" },
+    
+    { id: "concrete", label: "Concrete\nHall", group: "green" },
+    { id: "squid", label: "Squid Farm", group: "green" },
+    { id: "linhir", label: "Linhir", group: "green" },
+    { id: "shulker", label: "Shulker Farm", group: "green" },
+    { id: "frost", label: "Frost\nMountain", group: "green" },
+    
+    { id: "spiders", label: "Spiders", group: "orange" },
+    { id: "arena", label: "Arena", group: "orange" },
+    { id: "raid", label: "Raid Farm", group: "orange" },
+    { id: "egg", label: "Egg Factory", group: "orange" },
 ];
 
 const junctions = [
@@ -223,10 +229,12 @@ const edges = [
     { id:"28", from: "dogwood", to: "stronghold", label: "0", dashes: [10,10] },
     { id:"29", from: "witherfields", to: "sog", label: "0", dashes: [10,10] },
     { id:"30", from: "dunederry", to: "jungle", label: "1506" },
-    { id:"31", from: "museum", to: "redstone", label: "0", dashes: [10,10] },
+    { id:"31", from: "museum", to: "redstone", label: "359" },
     { id:"32", from: "squid", to: "concrete", label: "308" },
     { id:"33", from: "cobble", to: "echell", label: "573" },
     { id:"34", from: "echell", to: "omnidye", label: "451" },
+    { id:"35", from: "raid", to: "sog", label: "265" },
+    { id:"36", from: "egg", to: "raid", label: "284" },
 ];
 
 
@@ -251,7 +259,7 @@ const junction_exits = {
     },
     sog: {
         north: "castle",
-        east: "",
+        east: "raid",
         south: "witherfields",
         west: "arena"
     },
