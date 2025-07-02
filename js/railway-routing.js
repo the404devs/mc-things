@@ -149,6 +149,21 @@ const options = {
                     border: "black",
                 }
             },
+        },
+        purple: {
+            labelHighlightBold: true,
+            color: {
+                background: "#a080a0",
+                border: "purple",
+                highlight: {
+                    background: "#a080a0",
+                    border: "black",
+                },
+                hover: {
+                    background: "#a080a0",
+                    border: "black",
+                }
+            },
         }
     }
 };
@@ -167,6 +182,8 @@ const stations = [
     { id: "end", label: "End Portal", group: "blue" },
     { id: "redstone", label: "Redstone\nIslands", group: "blue" },
     { id: "museum", label: "Mob Museum", group: "blue" },
+    { id: "goat", label: "Horn Temple", group: "blue" },
+    { id: "eastport", label: "Eastport", group: "blue" },
 
     { id: "omnidye", label: "The Omnidye", group: "yellow" },
     { id: "echell", label: "Echell Forest", group: "yellow" },
@@ -187,6 +204,11 @@ const stations = [
     { id: "arena", label: "Arena", group: "orange" },
     { id: "raid", label: "Raid Farm", group: "orange" },
     { id: "egg", label: "Egg Factory", group: "orange" },
+
+    { id: "sandshear", label: "Sandshear", group: "purple" },
+    { id: "oasis", label: "Oasis", group: "purple" },
+    { id: "guardian", label: "Guardian Farm", group: "purple" },
+    { id: "mesa", label: "Mining Mesa", group: "purple" },
 ];
 
 const junctions = [
@@ -196,6 +218,8 @@ const junctions = [
     { id: "dwj", label: "Darkwood\nJunction", group: "junction" },
     { id: "jungle", label: "Jungle\nJunction", group: "junction" },
     { id: "sog", label: "Soggy\nJunction", group: "junction" },
+    { id: "prairie", label: "Golden Prairie\nJunction", group: "junction" },
+    { id: "aurora", label: "Aurora Valley\nJunction", group: "junction" },
 ];
 
 const edges = [
@@ -235,6 +259,15 @@ const edges = [
     { id:"34", from: "echell", to: "omnidye", label: "451" },
     { id:"35", from: "raid", to: "sog", label: "265" },
     { id:"36", from: "egg", to: "raid", label: "284" },
+    { id:"37", from: "egg", to: "prairie", label: "638" },
+    { id:"38", from: "sandshear", to: "prairie", label: "0", dashes: [10,10] },
+    { id:"39", from: "oasis", to: "prairie", label: "410" },
+    { id:"40", from: "oasis", to: "aurora", label: "500", dashes: [10,10] },
+    { id:"41", from: "museum", to: "aurora", label: "640", dashes: [10,10] },
+    { id:"42", from: "goat", to: "aurora", label: "0", dashes: [10,10] },
+    { id:"43", from: "goat", to: "eastport", label: "0", dashes: [10,10] },
+    { id:"44", from: "guardian", to: "aurora", label: "0", dashes: [10,10] },
+    { id:"45", from: "sandshear", to: "mesa", label: "0", dashes: [10,10] },
 ];
 
 
@@ -275,6 +308,18 @@ const junction_exits = {
         south: "shroom",
         west: "shulker"
     },
+    prairie: {
+        north: "oasis",
+        east: "aurora",
+        south: "sandshear",
+        west: "egg"
+    },
+    aurora: {
+        north: "guardian",
+        east: "goat",
+        south: "oasis",
+        west: "museum"
+    }
 }
 
 const data = {
