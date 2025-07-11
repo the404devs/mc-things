@@ -207,7 +207,7 @@ const stations = [
 
     { id: "sandshear", label: "Sandshear", group: "purple" },
     { id: "oasis", label: "Oasis", group: "purple" },
-    // { id: "guardian", label: "Guardian Farm", group: "purple" },
+    { id: "guardian", label: "Guardian Farm", group: "purple" },
     // { id: "mesa", label: "Mining Mesa", group: "purple" },
 ];
 
@@ -260,13 +260,13 @@ const edges = [
     { id:"35", from: "raid", to: "sog", label: "265" },
     { id:"36", from: "egg", to: "raid", label: "284" },
     { id:"37", from: "egg", to: "prairie", label: "638" },
-    { id:"38", from: "sandshear", to: "prairie", label: "0", dashes: [10,10] },
+    { id:"38", from: "sandshear", to: "prairie", label: "653" },
     { id:"39", from: "oasis", to: "prairie", label: "410" },
     { id:"40", from: "oasis", to: "aurora", label: "513" }, // Actually 613, reduced for balance
     { id:"41", from: "museum", to: "aurora", label: "693" }, // Actually 793
     // { id:"42", from: "goat", to: "aurora", label: "0", dashes: [10,10] },
     // { id:"43", from: "goat", to: "eastport", label: "0", dashes: [10,10] },
-    // { id:"44", from: "guardian", to: "aurora", label: "0", dashes: [10,10] },
+    { id:"44", from: "guardian", to: "aurora", label: "1154" },
     // { id:"45", from: "sandshear", to: "mesa", label: "0", dashes: [10,10] },
 ];
 
