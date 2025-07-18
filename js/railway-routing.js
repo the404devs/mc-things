@@ -182,8 +182,8 @@ const stations = [
     { id: "end", label: "End Portal", group: "blue" },
     { id: "redstone", label: "Redstone\nIslands", group: "blue" },
     { id: "museum", label: "Mob Museum", group: "blue" },
-    // { id: "goat", label: "Horn Temple", group: "blue" },
-    // { id: "eastport", label: "Eastport", group: "blue" },
+    { id: "goat", label: "Horn Temple", group: "blue" },
+    { id: "eastport", label: "Eastport", group: "blue" },
 
     { id: "omnidye", label: "The Omnidye", group: "yellow" },
     { id: "echell", label: "Echell Forest", group: "yellow" },
@@ -264,8 +264,8 @@ const edges = [
     { id:"39", from: "oasis", to: "prairie", label: "410" },
     { id:"40", from: "oasis", to: "aurora", label: "513" }, // Actually 613, reduced for balance
     { id:"41", from: "museum", to: "aurora", label: "693" }, // Actually 793
-    // { id:"42", from: "goat", to: "aurora", label: "0", dashes: [10,10] },
-    // { id:"43", from: "goat", to: "eastport", label: "0", dashes: [10,10] },
+    { id:"42", from: "goat", to: "aurora", label: "321" },
+    { id:"43", from: "goat", to: "eastport", label: "373" },
     { id:"44", from: "guardian", to: "aurora", label: "1154" },
     // { id:"45", from: "sandshear", to: "mesa", label: "0", dashes: [10,10] },
 ];
