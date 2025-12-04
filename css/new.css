@@ -877,3 +877,8 @@ div.header > a {
     float: right;
     right: 10px;
 }
+
+div.typable {
+    display: block;
+    font-family: 'minecraft';
+}

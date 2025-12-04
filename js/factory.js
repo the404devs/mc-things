@@ -49,7 +49,8 @@ const factory = {
     "glowstone": ["glowstone_dust"],
     "lead": ["string"],
     // "bow": ["string", "stick"],
-    "shulker_box": ["shulker_shell", "chest"]
+    "shulker_box": ["shulker_shell", "chest"],
+    "copper_chest": ["copper", "chest"],
     // "dispenser": ["bow", "cobblestone", "redstone"]
 }
 

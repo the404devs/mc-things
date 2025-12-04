@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Text Editor</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #121621;
+      --panel-2: #161b28;
+      --text: #e5e7eb;
+      --muted: #9aa3b2;
+      --accent: #3b82f6;
+      --ring: #60a5fa55;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 10% -20%, #0f1422, transparent), var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .editor-shell {
+      width: min(900px, 96vw);
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid #1f2534;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px #0008, 0 0 0 1px #0006 inset;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: #0e1220cc;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #1f2534;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 10px;
+      border-radius: 10px;
+      border: 1px solid #263047;
+      background: #101525;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      transition: transform .04s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { background: #141b2f; }
+    .btn:active { transform: translateY(1px); }
+    .btn.active { outline: 2px solid var(--ring); border-color: #2a3a5c; background: #121a30; }
+
+    .sep {
+      width: 1px; height: 24px; background: #2a3247; margin: 0 4px;
+    }
+
+    .color {
+      height: 36px; width: 42px; padding: 0; border-radius: 10px; overflow: hidden;
+      border: 1px solid #263047; background: #101525; cursor: pointer;
+    }
+    .color input { width: 100%; height: 100%; padding: 0; border: 0; background: transparent; }
+
+    .paper {
+      padding: 24px;
+      min-height: 360px;
+      max-height: 60vh;
+      overflow: auto;
+      line-height: 1.6;
+      border-top: 1px solid #0a0e17;
+    }
+
+    .editable {
+      background: #0d1324;
+      padding: 24px;
+      border: 1px solid #1b2338;
+      border-radius: 12px;
+      outline: none;
+    }
+    .editable:focus { border-color: #2a3a5c; box-shadow: 0 0 0 4px var(--ring); }
+
+    .hint { color: var(--muted); font-size: 12px; margin-top: 10px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+  <div class="editor-shell" role="application" aria-label="Simple text editor">
+    <div class="toolbar" role="toolbar" aria-label="Formatting">
+      <button class="btn" data-cmd="bold" aria-label="Bold (Ctrl/Cmd+B)" title="Bold (Ctrl/Cmd+B)"><strong>B</strong></button>
+      <button class="btn" data-cmd="italic" aria-label="Italic (Ctrl/Cmd+I)" title="Italic (Ctrl/Cmd+I)"><em>I</em></button>
+      <button class="btn" data-cmd="underline" aria-label="Underline (Ctrl/Cmd+U)" title="Underline (Ctrl/Cmd+U)"><u>U</u></button>
+      <button class="btn" data-cmd="strikeThrough" aria-label="Strikethrough" title="Strikethrough"><span style="text-decoration:line-through">S</span></button>
+      <div class="sep" aria-hidden="true"></div>
+      <label class="color btn" title="Text color">
+        <span class="sr-only">Text color</span>
+        <input id="foreColor" type="color" value="#ffffff" />
+      </label>
+      <label class="color btn" title="Highlight color">
+        <span class="sr-only">Highlight color</span>
+        <input id="hiliteColor" type="color" value="#000000" />
+      </label>
+      <div style="margin-left:auto"></div>
+      <button class="btn" id="clearFormat" title="Clear formatting">Clear</button>
+    </div>
+
+    <div class="paper">
+      <div id="editor" class="editable" contenteditable="true" spellcheck="true" aria-multiline="true">
+        <p><span style="color:#9aa3b2">Start typing… Select text to format it. Use ⌘/Ctrl+B, I, U. Color pickers for text & highlight.</span></p>
+      </div>
+      <div class="hint">Pro tip: paste from anywhere; formatting mostly preserved.</div>
+    </div>
+  </div>
+
+  <script>
+    // Simple editor using execCommand (widely supported despite deprecation). 
+    // Suitable for lightweight use-cases without a full framework.
+    (function () {
+      const editor = document.getElementById('editor');
+      const toolbar = document.querySelector('.toolbar');
+      const buttons = Array.from(toolbar.querySelectorAll('[data-cmd]'));
+
+      function apply(cmd, val = null) {
+        // Keep focus to avoid losing selection when clicking buttons
+        editor.focus();
+        document.execCommand(cmd, false, val);
+        refreshStates();
+      }
+
+      // Prevent mouse down from blurring the editor (so selection survives)
+      toolbar.addEventListener('mousedown', (e) => {
+        const tgt = e.target.closest('button, label');
+        if (!tgt) return;
+        e.preventDefault();
+      });
+
+      // Button commands
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => apply(btn.dataset.cmd));
+      });
+
+      // Color pickers
+      document.getElementById('foreColor').addEventListener('input', (e) => apply('foreColor', e.target.value));
+      document.getElementById('hiliteColor').addEventListener('input', (e) => apply('hiliteColor', e.target.value));
+
+      // Clear formatting: remove all inline styles and inline tags on selection by toggling removeFormat
+      document.getElementById('clearFormat').addEventListener('click', () => {
+        apply('removeFormat');
+        apply('foreColor', '');
+        apply('hiliteColor', '');
+      });
+
+      // Update toggle state based on current selection formatting
+      function refreshStates() {
+        buttons.forEach(btn => {
+          try {
+            const active = document.queryCommandState(btn.dataset.cmd);
+            btn.classList.toggle('active', !!active);
+          } catch (_) {
+            // Some commands may not report state in every browser
+          }
+        });
+      }
+
+      document.addEventListener('selectionchange', () => {
+        if (document.activeElement === editor || editor.contains(document.activeElement)) {
+          refreshStates();
+        }
+      });
+
+      // Basic keyboard shortcuts are handled by the browser for execCommand,
+      // but ensure focus stays in the editor.
+      editor.addEventListener('keydown', () => { /* no-op, placeholder */ });
+
+      // Ensure there's always at least one paragraph
+      editor.addEventListener('input', () => {
+        if (!editor.innerHTML.trim()) {
+          editor.innerHTML = '<p><br></p>';
+        }
+      });
+
+      // Accessibility: set initial role & label
+      editor.setAttribute('role', 'textbox');
+      editor.setAttribute('aria-label', 'Rich text editor');
+    })();
+  </script>
+</body>
+</html>

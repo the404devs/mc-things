@@ -364,4 +364,4 @@ function displayName(str) {
       );
 }  
 
-loadStats(2024);
+loadStats(2025);
