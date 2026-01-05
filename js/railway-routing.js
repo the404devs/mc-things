@@ -253,7 +253,7 @@ const edges = [
     { id:"27", from: "gg", to: "bunny", label: "201" },
     { id:"28", from: "redstone", to: "dwj", label: "333" },
     { id:"29", from: "dogwood", to: "stronghold", label: "1040" },
-    { id:"30", from: "witherfields", to: "sog", label: "0", dashes: [10,10] },
+    { id:"30", from: "witherfields", to: "sog", label: "290" },
     { id:"31", from: "dunederry", to: "jungle", label: "1506" },
     { id:"32", from: "museum", to: "redstone", label: "359" },
     { id:"33", from: "squid", to: "concrete", label: "308" },
